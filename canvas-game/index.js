@@ -46,6 +46,7 @@ player.draw()
 
 console.log(player)
 
+
 window.addEventListener('click', (event)=>{
     console.log("go")
     console.log(event)
