@@ -39,6 +39,7 @@ class Projectile {
     }
 
     update () {
+        this.draw()
         this.x = this.x + this.velocity.x
         this.y = this.y + this.velocity.y
         console.log(this.x)
@@ -54,14 +55,6 @@ player.draw()
 console.log(player)
 
 
-
-function animate() {
-    requestAnimationFrame(animate)
-    console.log('go')
-    projectile.draw()
-    projectile.update()
-}
-
 const projectile = new Projectile(
     canvas.width/2,
     canvas.height/2,
@@ -72,8 +65,30 @@ const projectile = new Projectile(
     }
 )
 
+
+
+const projectile2 = new Projectile(
+    canvas.width/2,
+    canvas.height/2,
+    5, 'green',
+    {
+        x:-0.1,
+        y:-0.1
+    }
+)
+
+const projectiles = [projectile,projectile2]
+
+
+function animate() {
+    requestAnimationFrame(animate)
+    projectiles.forEach((projectile)=>{
+        projectile.update()
+    })
+}
+
 window.addEventListener('click', (event)=>{
-    projectile.draw()
-    projectile.update()
+    // projectile.draw()
+    // projectile.update()
 })
-// animate()
+animate()
