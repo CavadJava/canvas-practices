@@ -49,10 +49,6 @@ console.log(player)
 
 window.addEventListener('click', (event)=>{
     console.log("go")
-    console.log('projectile.width:'+event.clientX)
-    console.log('projectile.height:'+event.clientY)
-    console.log('canvas.width:'+canvas.width)
-    console.log('canvas.height:'+canvas.height)
-    const projectile = new Projectile(event.clientX, event.clientY, 5, 'red',null)
+    const projectile = new Projectile(player.x, player.y, 5, 'red',null)
     projectile.draw()
 })
