@@ -73,7 +73,7 @@ const projectile = new Projectile(
 )
 
 window.addEventListener('click', (event)=>{
-    // projectile.draw()
-    // projectile.update()
+    projectile.draw()
+    projectile.update()
 })
-animate()
+// animate()
