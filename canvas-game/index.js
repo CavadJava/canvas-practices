@@ -72,9 +72,9 @@ window.addEventListener('click', (event)=>{
     }
     console.log(angle)
     const projectile = new Projectile(
-        event.clientX,
-        event.clientY,
-        5, 'red', {x:1,y:1}
+        canvas.width/2,
+        canvas.height/2,
+        5, 'red', velocity
     )    
     projectiles.push(projectile)
 })
