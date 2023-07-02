@@ -83,7 +83,14 @@ function spawnEnemies(){
         const y = 100;
         const radius = 30;
         const color = 'green';
-        
+        const angle = Math.atan2(
+            canvas.height/2 - y,
+            canvas.width/2 - x
+        )
+        const velocity = {
+            x:Math.cos(angle),
+            y:Math.sign(angle)
+        }
         enemies.push(new Enemy(x, y, radius, color, velocity))
     },1000);
 }
