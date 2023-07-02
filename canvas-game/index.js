@@ -80,8 +80,17 @@ const enemies = []
 function spawnEnemies(){
     setInterval(()=> {
         const radius = 30;
-        const x = 0-radius
-        const y = Math.random() * canvas.height;
+
+        let x,y
+        
+        if(Math.random()<0.5) {
+            x = Math.random() < 0.5 ? 0 - radius : canvas.width + radius
+            y = Math.random() * canvas.height
+        }
+        else {
+            x = Math.random() * canvas.width
+            y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius
+        }
         const color = 'green';
         const angle = Math.atan2(
             canvas.height/2 - y,
@@ -91,6 +100,11 @@ function spawnEnemies(){
             x:Math.cos(angle),
             y:Math.sign(angle)
         }
+        // alert("x:"+x+"y:"+y+
+        // "\ncanvas.height:"+canvas.height+"canvas.width:"+canvas.width+
+        // "\ncanvas.height/2:"+canvas.height/2+"canvas.width:"+canvas.width/2+
+        // "angle:"+angle+
+        // "\nMath.cos(angle):"+Math.cos(angle)+"Math.sign(angle):"+Math.sign(angle))
         enemies.push(new Enemy(x, y, radius, color, velocity))
     },1000);
 }
