@@ -113,10 +113,26 @@ let animationId
 function animate() {
 
     animationId = requestAnimationFrame(animate)
-    c.clearRect(0,0,canvas.width,canvas.height)
+    c.fillStyle = 'rgba(0,0,0,0.1)'
+    c.fillRect(0,0,canvas.width,canvas.height)
+    // c.clearRect(0,0,canvas.width,canvas.height)
     player.draw()
     projectiles.forEach((projectile)=>{
         projectile.update()
+        // alert("Projectile:"+projectile.x+"-"+projectile.y+"-"+projectile.radius+"\n"
+        // +"Player:"+player.x+"-"+player.y+"\n")
+
+        //remove from edges of screen
+        if(
+            projectile.x + projectile.radius < 0 ||
+            projectile.x - projectile.radius > canvas.width || 
+            projectile.x + projectile.radius < 0 ||
+            projectile.y - projectile.radius > canvas.height)
+            {
+                setTimeout(()=>{
+                    projectiles.splice(index, 1)
+                },0)
+            }
     })
     
     enemies.forEach((enemy, enemyIndex)=>{
